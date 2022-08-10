@@ -1,0 +1,54 @@
+
+<div class="container">
+  <div class="row">
+  <div class="col-12 content-center">
+    <div class="alert alert-primary">
+      valid=>{{addAppointmentForm.valid}}<br>
+      invalid=> {{addAppointmentForm.invalid}}<br>
+      value=> {{addAppointmentForm.value|json}} <br>
+      touched=>{{addAppointmentForm.touched}}<br>
+      errors=> {{addAppointmentForm.errors|json}}
+    </div>
+    <form [formGroup]="addAppointmentForm" (ngSubmit)="addAppointment(addAppointmentForm)">
+      <div class="mb-3 mt-3">
+        <label for="name" class="form-label">name:</label>
+        <input day="text" class="form-control" id="name" placeholder="Enter name"  name="name" formControlName="name" >
+      </div>
+<div >
+  {{name?.errors|json}} <br>
+</div>
+
+
+<h1>Name</h1>
+     <select class="form-select" aria-label="Default select example" id="day"   name="day" formControlName="day" >
+          <option  selected>select Doctor</option>
+          <option value="sa">sa</option>
+          <option value="su">su</option>
+          <option value="mo">mo</option>
+          <option value="we">we</option>
+          <option value="th">th</option>
+        </select>
+        <div >
+          {{day?.errors|json}}
+           <div *ngIf="handleD()">add doctor or nurse only</div>
+        </div>
+
+        <h1>Doctors</h1>
+        <select class="form-select" aria-label="Default select example" id="DoctorId" name="DoctorId" formControlName="DoctorId" >
+          <option  selected>select Doctor</option>
+          <option *ngFor="let d of all " value={{d._id}}>{{d.name}} ${{d.VezeetaPrice}}</option>
+        </select>
+        <div >
+          {{DoctorId?.errors|json}}
+        </div>
+
+
+        <button  class="btn btn-primary">add</button>
+      </form>
+
+    </div>
+</div>
+</div>
+
+
+
